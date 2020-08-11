@@ -4,6 +4,7 @@ from tensorflow.contrib import rnn
 import random
 import sys
 sys.path.append("../")
+# noinspection PyUnresolvedReferences
 from safdKit import prec_reca_F1, get_first_beat, early_det
 from collections import defaultdict
 
@@ -97,9 +98,9 @@ def minibatch(X, T, C, batch_size=16, n_input=8):
             # )
     # assert(len(minibatch_list_x)==len(minibatch_list_y))
     minibatch_list_y = minibatch_list_c
-    c = list(zip(minibatch_list_x, minibatch_list_y, minibatch_list_t, minibatch_list_c))
+    c = list(zip(minibatch_list_x, minibatch_list_y, minibatch_list_t, minibatch_list_c)) #zip将参数成员对应位置的数打包成元组，list将其转换成列表
     random.shuffle(c)
-    minibatch_list_x, minibatch_list_y, minibatch_list_t, minibatch_list_c = zip(*c)
+    minibatch_list_x, minibatch_list_y, minibatch_list_t, minibatch_list_c = zip(*c)  #将元组c解压成list
     return minibatch_list_x, minibatch_list_y, minibatch_list_t, minibatch_list_c
 
 mini_batch_size = 16
@@ -121,7 +122,7 @@ t = tf.placeholder(tf.int32, name='time_steps')
 gru_cell = rnn.GRUCell(num_units)
 outputs, _ = tf.nn.dynamic_rnn(cell=gru_cell, inputs=X, dtype="float32")
 # Select last output.
-last = tf.squeeze(tf.transpose (outputs, [0, 2, 1])[:,:,-1])
+last = tf.squeeze(tf.transpose(outputs, [0, 2, 1])[:,:,-1] )
 last = outputs[:,-1,:]
 
 pred_logits = tf.matmul(last, out_weights) + out_bias

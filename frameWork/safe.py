@@ -15,7 +15,7 @@ from collections import defaultdict
 # load data
 #
 if len(sys.argv) != 2:
-    print "please add 1 parameter."
+    print("please add 1 parameter.")
     exit(0)
 
 if sys.argv[1] == "twitter":
@@ -53,7 +53,7 @@ elif sys.argv[1] == "wiki":
     n_input = 8
 
 else:
-    print "parameter is not right, twitter or wiki."
+    print("parameter is not right, twitter or wiki.")
     exit(0)
 
 
@@ -256,12 +256,12 @@ for n_epoch in range(num_epoches):
                 best_thrld = thrld
                 last_improvement = n_epoch+1
                 saver.save(sess=session, save_path=save_path)
-                print "**** ", n_epoch + 1, best_validation_accuracy, best_thrld
+                print("**** ", n_epoch + 1, best_validation_accuracy, best_thrld)
 
     if (n_epoch+1)-last_improvement > require_improvement:
         break
 
-    print "epoch: ", n_epoch, _mle_loss
+    print("epoch: ", n_epoch, _mle_loss)
 
 saver.restore(sess=session, save_path=save_path)
 correct = 0
@@ -324,16 +324,16 @@ _precision, _recall, _F1 = prec_reca_F1(gt, pr)
 
 seq_corr_rate = (np.sum(np.asarray(early_correct), axis=0)/float(test_num))
 
-print
-print
-print
-print "precision: ", _precision
-print "recall: ", _recall
-print "F1: ", _F1
-print "accuracy: ", seq_corr_rate
+# print
+# print
+# print
+print("precision: ", _precision)
+print("recall: ", _recall)
+print("F1: ", _F1)
+print("accuracy: ", seq_corr_rate)
 
-print "------------------------------------------------------"
+print("------------------------------------------------------")
 for k, v in early_detect_steps.items():
-    print k, ": ", np.mean(v), len(v)
+    print(k, ": ", np.mean(v), len(v))
 
 exit(0)

@@ -3,8 +3,6 @@ from collections import defaultdict
 from safdKit import prec_reca_F1
 
 
-
-
 x = [[0,1,1,0],[1,1,1,0],[0,1,1,1],[0,0,1,0], [0,0,1,0]]
 
 y = [[1,0,1,0],[0,0,0,0],[0,1,1,1],[1,0,1,0], [1,1,0,1]]
@@ -13,29 +11,27 @@ x = np.array(x)
 y = np.array(y)
 
 
+print(x)
 
+# print
+# print
+# print
 
-print x
-
-print
-print
-print
-
-print y
+print(y)
 
 precision, recall, F1 = prec_reca_F1(x,y)
 
-print
-print
+# print
+# print
 
-print "precison: ", precision
-print
+print("precison: ", precision)
+# print
 
-print "recall: ", recall
-print
+print("recall: ", recall)
+# print
 
-print "F1: ", F1
-print
+print("F1: ", F1)
+# print
 
 exit(0)
 
@@ -68,40 +64,13 @@ def get_first_beat(x, y):
 # print y
 #
 # print "\n"
-print get_first_beat(x, y)
+print(get_first_beat(x, y))
 
 # gt = np.array([4,4,4,4])
 # print gt-get_first_beat(x, y)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 exit(0)
-
-
-
-
-
 
 
 
@@ -119,9 +88,9 @@ X_test = np.load(source_path + "X_test_var.npy")
 T_test = np.load(source_path + "T_test_var.npy")
 C_test = np.load(source_path + "C_test_var.npy")
 
-print X_train.shape, T_train.shape, C_train.shape
-print X_valid.shape, T_valid.shape, C_valid.shape
-print X_test.shape, T_test.shape, C_test.shape
+print(X_train.shape, T_train.shape, C_train.shape)
+print(X_valid.shape, T_valid.shape, C_valid.shape)
+print(X_test.shape, T_test.shape, C_test.shape)
 
 exit(0)
 
@@ -140,53 +109,59 @@ exit(0)
 # T_valid = np.load(source_path + "T_valid.npy")
 # C_valid = np.load(source_path + "C_valid.npy")
 
-print
-print "Tranining: \n"
+# print
+print("Tranining: \n")
 
 coll_train = []
 count = 0
 for i in np.unique(T_train):
-    print i, ": ", np.sum(T_train == i)
+    print(i, ": ", np.sum(T_train == i))
     count += np.sum(T_train == i)
     coll_train.append(np.sum(T_train == i))
 
-print "Total: ", count
+print("Total: ", count)
 
 
-print
-print "Validataion: \n"
+# print
+print("Validataion: \n")
 
 coll_valid = []
 count = 0
 for i in np.unique(T_valid):
-    print i, ": ", np.sum(T_valid == i)
+    print(i, ": ", np.sum(T_valid == i))
     count += np.sum(T_valid == i)
     coll_valid.append(np.sum(T_valid == i))
 
-print "Total: ", count
+print("Total: ", count)
 
 
-print
-print "Testing: \n"
+# print
+print("Testing: \n")
 
 coll_test = []
 count = 0
 for i in np.unique(T_test):
-    print i, ": ", np.sum(T_test == i)
+    print(i, ": ", np.sum(T_test == i))
     count += np.sum(T_test == i)
     coll_test.append(np.sum(T_test == i))
 
-print "Total: ", count
+print("Total: ", count)
 
 
-print "Censor/Uncensor: ", np.sum(C_train == 0), np.sum(C_train == 1), np.sum(C_valid == 0), np.sum(C_valid == 1), np.sum(C_test == 0), np.sum(C_test == 1)
+print("Censor/Uncensor: ",
+      np.sum(C_train == 0),
+      np.sum(C_train == 1),
+      np.sum(C_valid == 0),
+      np.sum(C_valid == 1),
+      np.sum(C_test == 0),
+      np.sum(C_test == 1))
 
 
 coll_train = np.array(coll_train)
 coll_valid = np.array(coll_valid)
 coll_test = np.array(coll_test)
 
-print coll_train + coll_valid + coll_test
+print(coll_train + coll_valid + coll_test)
 
 
 exit(0)

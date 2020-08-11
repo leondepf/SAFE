@@ -19,7 +19,7 @@ before_steps = 5
 
 
 if len(sys.argv) != 2:
-    print "please add 1 parameter."
+    print("please add 1 parameter.")
     exit(0)
 
 if sys.argv[1] == "twitter":
@@ -57,7 +57,7 @@ elif sys.argv[1] == "wiki":
     # n_input = 8
 
 else:
-    print "parameter is not right, twitter or wiki."
+    print("parameter is not right, twitter or wiki.")
     exit(0)
 
 
@@ -253,11 +253,11 @@ _precision, _recall, _F1 = prec_reca_F1(gt, pr)
 seq_corr_rate = early_correct/float(_seq_pred_y_test.shape[0])
 # seq_corr_rate = np.sum(np.asarray(early_correct), axis=0)/float(_seq_pred_y_test.shape[0])
 
-print "Cox:"
-print "precision: ", _precision
-print "recall: ", _recall
-print "F1: ", _F1
-print "accuracy: ", seq_corr_rate
+print("Cox:")
+print("precision: ", _precision)
+print("recall: ", _recall)
+print("F1: ", _F1)
+print("accuracy: ", seq_corr_rate)
 
 
 # SVM-Survival analysis
@@ -311,12 +311,12 @@ pr = np.logical_not(pp).astype(float)
 _precision, _recall, _F1 = prec_reca_F1(gt, pr)
 
 seq_corr_rate = early_correct/float(seq_pred_y_valid.shape[0])
-print "\n\n"
-print "SVM:"
-print "precision: ", _precision
-print "recall: ", _recall
-print "F1: ", _F1
-print "accuracy: ", seq_corr_rate
+print("\n\n")
+print("SVM:")
+print("precision: ", _precision)
+print("recall: ", _recall)
+print("F1: ", _F1)
+print("accuracy: ", seq_corr_rate)
 
 exit(0)
 

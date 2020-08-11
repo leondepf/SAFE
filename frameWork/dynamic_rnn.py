@@ -79,7 +79,7 @@ y_seq_pred = tf.reshape(
             [batch_size, -1])
 y_pred = y_seq_pred[:,-1]
 
-mse_loss = tf.losses.mean_squared_error(y_true, y_pred)
+mse_loss = tf.losses.mean_squared_error(y_true0, y_pred)
 
 #for supervised
 train_supervised = tf.train.AdamOptimizer(learning_rate)
